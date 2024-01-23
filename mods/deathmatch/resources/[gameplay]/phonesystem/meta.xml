@@ -1,0 +1,23 @@
+<meta>
+	<info author="Sovyshka" version="1.0" type="script" description="Телефон" />
+	<min_mta_version client="1.5.6-9.16404"></min_mta_version>
+	<script src="client.lua" type="client"/>
+	<script src="server.lua" type="server"/>
+
+	<file src = "data/index.html"/>
+	<file src = "data/style.css"/>
+	<file src = "data/script.js"/>
+	<file src = "data/images.jfif"/>
+	<file src = "data/svg/carss.svg"/>
+
+	<file src="data/images/Elegy.png"/>
+	<file src="data/images/Hotring.png"/>
+	<file src="data/images/Infernus.png"/>
+	<file src="data/images/Jester.png"/>
+	<file src="data/images/Turismo.png"/>
+	<file src="data/images/Banshee.png"/>
+	<file src="data/images/Bullet.png"/>
+	<file src="data/images/Hotknife.png"/>
+	<file src="data/images/Supergt.png"/>
+	<file src="data/images/Uranus.png"/>
+</meta>

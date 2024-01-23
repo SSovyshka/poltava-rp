@@ -1,0 +1,124 @@
+
+.phone{
+    position: relative;
+    /*overflow: hidden;*/
+    width: 280px;
+    height: 540px;
+    border-radius: 20px;
+    border: 1.2mm solid black;
+    background-image: url("images.jfif");
+    background-size: cover;
+}
+
+.phone:before{
+    content: '';
+    position: absolute;
+    width: 6px;
+    height: 100px;
+    background-color: black;
+    top: 100px;
+    left: -6px;
+    border-radius: 5px;
+}
+
+.phone:after{
+    content: '';
+    position: absolute;
+    width: 6px;
+    height:50px;
+    background-color: black;
+    top: 170px;
+    right: -6px;
+    border-radius: 5px;
+}
+
+.background-camera{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background-color: black;
+    z-index: 2;
+}
+
+.camera{
+    width: 40%;
+    height: 40%;
+    border-radius: 50%;
+    background-color: #1c1c1c;
+}
+
+.main-button{
+    position: absolute;
+    bottom: 20px;
+    left: 25%;
+    width: 50%;
+    height: 14px;
+    border-radius: 30px;
+    background-color: rgba(114, 114, 114, 0.7);
+    z-index: 2;
+}
+
+.apps{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    place-items: center;
+    gap: 10px;
+    /*position: absolute;*/
+    width: 100%;
+    margin-top: 60px;
+}
+
+.app{
+    display: flex;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    background-color: rgba(110, 110, 110, 0.9);
+    border-radius: 20px;
+}
+
+.app > img{
+    width: 90%;
+    height: 100%;
+}
+
+.bottom-apps{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    position: absolute;
+    width: 80%;
+    left: 10%;
+    bottom: 50px;
+}
+
+.car-app{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    border-radius: 16px;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    background-color: pink;
+}
+
+.cars-content{
+    padding-top: 40px;
+}
+
+.car{
+    width: 100%;
+    margin-top: 10px;
+    height: 50px;
+    background-color: orange;
+
+}

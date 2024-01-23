@@ -1,0 +1,22 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.left-panel {
+    width: 600px;
+    height: 1920px;
+    background-color: #545454;
+}
+
+.car-container {
+    width: 100%;
+    height: 200px;
+    margin-bottom: 10px;
+    background-color: #262626;
+    color: white; /* Добавлено для читаемости текста в контейнерах */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer; /* Добавлено, чтобы указать, что блоки кликабельны */
+}

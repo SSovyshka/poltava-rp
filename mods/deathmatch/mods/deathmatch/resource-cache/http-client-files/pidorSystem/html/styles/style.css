@@ -1,0 +1,325 @@
+/* Apple's Fonts */
+
+@font-face {
+    font-family: sf-bold;
+    src: url('./fonts/sf-pro-bold.OTF');
+}
+
+@font-face {
+    font-family: sf-medium;
+    src: url('./fonts/sf-pro-medium.OTF');
+}
+
+@font-face {
+    font-family: sf-regular;
+    src: url('./fonts/sf-pro-regular.OTF');
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    user-select: none;
+    font-family: sf-regular;
+    color: #eee;
+}
+
+body {
+    height: 100vh;
+    width: 100vw;
+}
+
+.container {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Root */
+
+:root {
+    --px-radius: 22px;
+    --mm-apps-radius: 4mm;
+    --ios-color: #fff;
+    --cover-color: #121212;
+}
+
+/* Defualt */
+
+button,
+input {
+    all: unset;
+}
+
+/* iPhone 12 Pro Details */
+
+.iphone {
+    height: 554px;
+    width: 270px;
+    margin-right: 1.5rem;
+    border-radius: var(--px-radius);
+    border: 1mm solid var(--cover-color);
+    background-color: var(--cover-color);
+    position: relative;
+}
+
+.iphone::before {
+    content: '';
+    height: 10mm;
+    width: 1mm;
+    background-color: var(--cover-color);
+    position: absolute;
+    border-radius: var(--px-radius);
+    top: 25mm;
+    right: -1.5mm;
+}
+
+.iphone::after {
+    content: '';
+    height: 20mm;
+    width: 1mm;
+    background-color: var(--cover-color);
+    position: absolute;
+    border-radius: var(--px-radius);
+    top: 25mm;
+    left: -1.5mm;
+}
+
+.notch {
+    height: 5.5mm;
+    width: 34mm;
+    background-color: var(--cover-color);
+    border-radius: 0 0 4.09mm 4.09mm;
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, 0);
+    z-index: 2;
+}
+
+.notch .camera {
+    height: 8px;
+    width: 8px;
+    margin: auto 0;
+    border-radius: 100%;
+    background-color: #28282857;
+}
+
+.digital-clock {
+    position: absolute;
+    z-index: 1;
+    color: #eee;
+    font-family: sf-medium;
+    font-size: 10.5px;
+    top: 8px;
+    left: 12px;
+}
+
+.battery {
+    height: 10px;
+    width: 22px;
+    border-radius: 3px;
+    border: 1px solid #ccc;
+    position: absolute;
+    top: 8px;
+    right: 13px;
+    z-index: 999;
+}
+
+.battery .bar {
+    height: 100%;
+    width: 30%;
+    background-color: #eee;
+}
+/* Home Button */
+
+.home-button {
+    height: 2mm;
+    width: 28mm;
+    border-radius: var(--px-radius);
+    background-color: #f0f8ff6e;
+    transition: all .2s linear;
+    position: absolute;
+    bottom: 1.55mm;
+    left: 50%;
+    transform: translate(-50%, 0);
+}
+
+
+/* Screens */
+
+.iphone>section {
+    height: 100%;
+    width: 100%;
+    border-radius: var(--px-radius);
+    background-image: url('./backgrounds/2.jpg');
+    background-position: center;
+    background-size: cover;
+}
+
+/* Lock Screen */
+
+.lock-screen {
+    position: relative;
+}
+
+.lock-screen::before {
+    /* To make the lock screen be darker */
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    border-radius: var(--px-radius);
+    opacity: 0.5;
+    z-index: 0;
+}
+
+.date {
+    height: fit-content;
+    width: 85%;
+    color: var(--ios-color);
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: sf-regular;
+    position: absolute;
+    top: 8mm;
+    left: 50%;
+    transform: translate(-50%);
+    z-index: 1;
+}
+
+.date .the-date {
+    font-size: 18px;
+    font-family: sf-regular;
+}
+
+.date .time {
+    font-size: 65px;
+}
+
+/* Unlock Screen */
+
+.unlock-screen {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.apps {
+    height: 50%;
+    width: 100%;
+    padding: 0 8px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    place-items: center;
+    gap: 8px;
+}
+
+.dock {
+    height: 64px;
+    width: calc(100% - 16px);
+    padding: 0 8px;
+    background-color: #eeeeee40;
+    backdrop-filter: blur(2px);
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 50px;
+}
+
+.app {
+    height: 48px;
+    width: 48px;
+}
+
+.app img {
+    height: 100%;
+    width: 100%;
+}
+
+.app-interface {
+    height: 100%;
+    width: 100%;
+    background-color: #181818;
+    border-radius: calc(var(--px-radius) - 2.5px);
+}
+
+/* Interface Designs For Applications */
+
+/* Calculator */
+
+.calculator {
+    height: 100%;
+    padding-top: 180px;
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+
+.calculator input {
+    font-size: 25px;
+    padding: 0 15px;
+}
+
+.calculator .operations {
+    height: 75%;
+    width: 100%;
+    padding: 0 15px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    gap: 8px;
+}
+
+.calculator .operations button {
+    border-radius: 50%;
+    background-color: #333;
+    font-size: medium;
+    font-weight: bolder;
+    text-align: center;
+    transition: background-color 100ms linear;
+}
+
+.calculator .operations button:active {
+    background-color: #444;
+}
+
+.calculator .operations .zero-fill {
+    grid-column: 1/3;
+    border-radius: 25px;
+    text-align: left;
+    text-indent: 20px;
+}
+
+.orange-color {
+    background-color: #c0781f !important;
+}
+
+/* Scroll Bar */
+
+::-webkit-scrollbar {
+    width: 0;
+}
+
+::-webkit-scrollbar-corner {
+    background-color: transparent;
+}
+
+/* Others */
+
+::selection {
+    background-color: #007AFF;
+}

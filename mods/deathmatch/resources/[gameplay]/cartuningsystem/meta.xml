@@ -1,0 +1,12 @@
+<meta>
+	<info author="Sovyshka" version="1.0" type="script" description="Телефон" />
+	<min_mta_version client="1.5.6-9.16404"></min_mta_version>
+
+	<script src="server.lua" type="server"/>
+	<script src="client.lua" type="client"/>
+
+	<file src="data/index.html"/>
+    <file src="data/css/style.css"/>
+    <file src="data/script/script.js"/>
+	
+</meta>

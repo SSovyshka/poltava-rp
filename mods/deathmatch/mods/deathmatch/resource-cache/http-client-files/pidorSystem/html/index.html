@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./styles/style.css" />
+    <script src="./scripts/script.js" defer></script>
+</head>
+<body>
+    <div class="container">
+        <div class="iphone">
+            <div class="notch">
+                <div class="camera"></div>
+            </div>
+
+            <div class="digital-clock">4:52 AM</div>
+            <div class="battery">
+                <div class="bar"></div>
+            </div>
+
+            <section class="lock-screen">
+                <div class="date">
+                    <div class="the-date">Tuesday, April 4</div>
+                    <div class="time">4:52</div>
+                </div>
+            </section>
+
+            <section class="unlock-screen" style="display: none;">
+                <div class="apps">
+                    <button class="app" type="button">
+                        <img src="./styles/svgs/apple-tv.svg" alt="">
+                    </button>
+                    <button class="app" type="button">
+                        <img src="./styles/svgs/stocks.svg" alt="">
+                    </button>
+                    <button class="app" type="button">
+                        <img src="./styles/svgs/calculator.svg" alt="">
+                    </button>
+                    <button class="app" type="button">
+                        <img src="./styles/svgs/news.svg" alt="">
+                    </button>
+                    <button class="app" type="button">
+                        <img src="./styles/svgs/settings.svg" alt="">
+                    </button>
+                </div>
+                <div class="dock">
+                    <button class="app" type="button">
+                        <img src="./styles/svgs/phone.svg" alt="">
+                    </button>
+                    <button class="app" type="button">
+                        <img src="./styles/svgs/contacts.svg" alt="">
+                    </button>
+                </div>
+            </section>
+
+            <section class="apps-interfaces" style="display: none;">
+                <div class="app-interface" style="display: none;" data-app-id="0"></div> <!-- Apple Tv App -->
+                <div class="app-interface" style="display: none;" data-app-id="1"></div> <!-- Stocks App -->
+                <div class="app-interface" style="display: none;" data-app-id="2"> <!-- Calculator App -->
+                    <div class="calculator">
+                        <input type="text" class="result-board" disabled>
+                        <div class="operations">
+                            <button type="button">AC</button>
+                            <button type="button">%</button>
+                            <button type="button">C</button>
+                            <button type="button" class="orange-color">÷</button>
+                            <button type="button">7</button>
+                            <button type="button">8</button>
+                            <button type="button">9</button>
+                            <button type="button" class="orange-color">×</button>
+                            <button type="button">6</button>
+                            <button type="button">5</button>
+                            <button type="button">4</button>
+                            <button type="button" class="orange-color">-</button>
+                            <button type="button">3</button>
+                            <button type="button">2</button>
+                            <button type="button">1</button>
+                            <button type="button" class="orange-color">+</button>
+                            <button type="button" class="zero-fill">0</button>
+                            <button type="button">.</button>
+                            <button type="button" class="orange-color">=</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="app-interface" style="display: none;" data-app-id="3"></div> <!-- News App -->
+                <div class="app-interface" style="display: none;" data-app-id="4"></div> <!-- Settings App -->
+                <div class="app-interface" style="display: none;" data-app-id="5"></div> <!-- Phone App -->
+                <div class="app-interface" style="display: none;" data-app-id="6"></div> <!-- Contacts App -->
+            </section>
+
+            <div class="home-button"></div>
+        </div>
+    </div>
+</body>
+</html>
