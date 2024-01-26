@@ -140,3 +140,22 @@
 [2024-01-23 10:48:13] LOGIN: (Everyone, Admin, Console) Sovyshka successfully logged in as 'sovyshka' (IP: 26.121.158.76  Serial: F1E0AB04532FA86176AA194DE8BBA9F3)
 [2024-01-23 14:58:39] LOGIN: (Everyone, Admin, Console) Sovyshka successfully logged in as 'sovyshka' (IP: 26.121.158.76  Serial: F1E0AB04532FA86176AA194DE8BBA9F3)
 [2024-01-23 15:01:18] LOGIN: (Everyone, Admin) stultus successfully logged in as 'stultus' (IP: 26.50.91.35  Serial: A4097AE9A3D84D3B7CA83FC3E036F5A1)
+[2024-01-24 07:55:59] LOGIN: Sovyshka tried to log in as 'Sovyshka' (Unknown account) (IP: 26.121.158.76  Serial: F1E0AB04532FA86176AA194DE8BBA9F3)
+[2024-01-24 07:56:12] LOGIN: (Everyone, Admin, Console) Sovyshka successfully logged in as 'sovyshka' (IP: 26.121.158.76  Serial: F1E0AB04532FA86176AA194DE8BBA9F3)
+[2024-01-24 14:45:17] LOGIN: Sovyshka tried to log in as 'sovyhska' (Unknown account) (IP: 26.121.158.76  Serial: F1E0AB04532FA86176AA194DE8BBA9F3)
+[2024-01-24 14:45:24] LOGIN: (Everyone, Admin, Console) Sovyshka successfully logged in as 'sovyshka' (IP: 26.121.158.76  Serial: F1E0AB04532FA86176AA194DE8BBA9F3)
+[2024-01-24 14:51:25] LOGIN: (Everyone, Admin, Console) Sovyshka successfully logged in as 'sovyshka' (IP: 26.121.158.76  Serial: F1E0AB04532FA86176AA194DE8BBA9F3)
+[2024-01-24 14:52:31] LOGIN: (Everyone, Admin, Console) Sovyshka successfully logged in as 'sovyshka' (IP: 26.121.158.76  Serial: F1E0AB04532FA86176AA194DE8BBA9F3)
+[2024-01-24 16:40:22] LOGIN: Sovyshka tried to log in as 'sovyhska' (Unknown account) (IP: 26.121.158.76  Serial: F1E0AB04532FA86176AA194DE8BBA9F3)
+[2024-01-24 16:40:29] LOGIN: (Everyone, Admin, Console) Sovyshka successfully logged in as 'sovyshka' (IP: 26.121.158.76  Serial: F1E0AB04532FA86176AA194DE8BBA9F3)
+[2024-01-24 17:07:48] LOGIN: (Everyone, Admin, Console) Sovyshka successfully logged in as 'sovyshka' (IP: 26.121.158.76  Serial: F1E0AB04532FA86176AA194DE8BBA9F3)
+[2024-01-25 17:26:30] HTTP: 'sovyshka' entered correct password from 127.0.0.1
+[2024-01-25 17:37:01] HTTP: 'sovyshka' no longer connected
+[2024-01-25 18:46:02] HTTP: Failed login attempt from 192.168.0.87 (bad login)
+[2024-01-25 18:46:12] HTTP: Failed login for user 'sovyshka' because 192.168.0.87 not associated with authorized serial
+[2024-01-25 19:01:58] LOGIN: (Everyone, Admin, Console) Sovyshka successfully logged in as 'sovyshka' (IP: 127.0.0.1  Serial: F1E0AB04532FA86176AA194DE8BBA9F3)
+[2024-01-25 19:02:05] LOGIN: (Everyone, Admin, Console) AndreyWarGold successfully logged in as 'andreywargold' (IP: 194.44.179.104  Serial: 5A595149904511AA9E1697EDD5BD4F03)
+[2024-01-25 19:03:55] HTTP: 'andreywargold' entered correct password from 194.44.179.104
+[2024-01-25 19:09:36] HTTP: 'andreywargold' no longer connected
+[2024-01-26 13:43:03] LOGIN: (Everyone, Admin) stultus successfully logged in as 'stultus' (IP: 46.150.75.67  Serial: A4097AE9A3D84D3B7CA83FC3E036F5A1)
+[2024-01-26 13:44:29] HTTP: 'sovyshka' entered correct password from 127.0.0.1

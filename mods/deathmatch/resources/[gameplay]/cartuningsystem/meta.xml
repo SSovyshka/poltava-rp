@@ -8,5 +8,11 @@
 	<file src="data/index.html"/>
     <file src="data/css/style.css"/>
     <file src="data/script/script.js"/>
+
+	<file src="data/images/svg/engine.svg"/>
+	<file src="data/images/svg/brake.svg"/>
+	<file src="data/images/svg/shield.svg"/>
+	<file src="data/images/svg/suspension.svg"/>
 	
 </meta>
+

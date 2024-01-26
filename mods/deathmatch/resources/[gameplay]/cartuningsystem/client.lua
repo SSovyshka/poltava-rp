@@ -10,7 +10,7 @@ function guiCarShowRoom(bool)
         guiSetInputMode("no_binds_when_editing")
         addEventHandler('onClientBrowserCreated', browser, function()
             loadBrowserURL(browser, "http://mta/local/data/index.html")
-            triggerServerEvent('onTuningCar', root, localPlayer)
+            triggerServerEvent('onTuningCarEnter', root, localPlayer)
         end)
     else
         if isElement(browserGUI) then
@@ -19,6 +19,8 @@ function guiCarShowRoom(bool)
             end)
             guiSetInputMode("allow_binds")
             destroyElement(browserGUI)
+            setCameraTarget(localPlayer)
+            triggerServerEvent('onTuningCarExit', root, localPlayer)
             browserGUI, browser = nil
         end
     end
@@ -35,11 +37,12 @@ end
 
 bindKey("[", "down", toggleGui)
 
--- addEvent('engine', true)
--- addEventHandler( "engine", root, function()
+
+addEvent('engine', true)
+addEventHandler( "engine", root, function()
     
---     local vehicle = getPedOccupiedVehicle(localPlayer)
+    local vehicle = getPedOccupiedVehicle(localPlayer)
 
---     triggerServerEvent('engine', root, vehicle)
+    triggerServerEvent('engine', root, vehicle)
 
--- end)
+end)

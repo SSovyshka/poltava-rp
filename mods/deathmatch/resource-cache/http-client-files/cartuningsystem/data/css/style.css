@@ -10,7 +10,7 @@
 
 .left-menu{
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     width: 400px;
     height: 100%;
     background-color: orange;
@@ -19,8 +19,14 @@
 .stat{
     display: flex;
     align-items: center;
-    justify-content: center;
+    margin: 10px;
     width: 70%;
     height: 50px;
     background-color: pink;
+}
+
+.stat > img{
+    width: 30px;
+    height: 30px;
+    margin: 10px;
 }

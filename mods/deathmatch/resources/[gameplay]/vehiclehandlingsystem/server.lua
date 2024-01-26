@@ -1,3 +1,8 @@
+sqlLink = dbConnect ( 
+    "sqlite", -- тип базы данных 
+    ":/vehicles.db" -- путь к файлу БД 
+) 
+
 local predefinedHandling = {
 	[411] = {
 		["mass"] = 1525,
