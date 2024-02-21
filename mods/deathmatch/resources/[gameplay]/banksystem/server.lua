@@ -22,7 +22,8 @@ function initMarkers()
     startIndex = 1
     if num ~= 0 then 
         for i=1, num do
-            createMarker(tonumber(res[i]['x']), tonumber(res[i]['y']), tonumber(res[i]['z']), "cylinder", 1)
+            local marker = createMarker(tonumber(res[i]['x']), tonumber(res[i]['y']), tonumber(res[i]['z']), "cylinder", 1)
+            setElementData(marker, "resource", getResourceName(getThisResource()))
         end
     end
 end
@@ -64,6 +65,13 @@ function commandGetMoney(client)
 end
 addEvent("getMoney", true)
 addEventHandler("getMoney", root, commandGetMoney)
+
+function commandUpdate(client)
+    money = checkIfCreated(client)
+    setElementData(client, "money", money)
+end
+addEvent("update", true)
+addEventHandler("update", root, commandUpdate)
 
 
 function commandGetMoneyGUI(client)

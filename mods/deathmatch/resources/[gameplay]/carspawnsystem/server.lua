@@ -30,7 +30,7 @@ addEventHandler("onGetCar", root, function(player, carId)
                 veh = createVehicle(row.car_model, x, y, z)
 
 
-                triggerEvent("setVehicleHandlingByModel", root, veh)
+                triggerEvent("setVehicleHandlingByModelDB", root, veh)
                 if row.car_stats ~= nil then
                     triggerEvent("setVehicleHandlingByJson", root, veh, row.car_stats)
                 end
@@ -39,13 +39,11 @@ addEventHandler("onGetCar", root, function(player, carId)
 
                 setElementData(veh, "owner", getPlayerName(player))
                 setElementData(veh, "carId", row.car_id)
-
-                if row.car_stat ~= nil then
-                    triggerEvent("setVehicleHandlingByModel", root, veh)
-                end
                 
                 warpPedIntoVehicle(player, veh)
                 
+                outputDebugString(toJSON(getVehicleHandling(veh)))
+
             end
 
         end

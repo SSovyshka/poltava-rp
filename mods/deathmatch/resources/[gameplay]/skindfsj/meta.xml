@@ -1,0 +1,7 @@
+<meta>
+<info author="www.mta-resource" description="MTA Resource Repalce Master PRO" version="1.3" type="script" />
+<include resource="freeroam"/>
+<script src="client.lua" type="client"/>
+<file src="skin.txd" type="client"/>
+<file src="skin.dff" type="client"/>
+</meta> 

@@ -45,6 +45,36 @@ local predefinedHandling = {
     }
 }
 
+
+-- addEventHandler("onVehicleEnter", root, function(player)
+--     for key, value in pairs(predefinedHandling) do
+
+--         local sqlQuery = "INSERT INTO handling (model, stats) VALUES ('" .. key .. "', '" .. string.sub(toJSON(value), 3, -3) .. "')"
+--         dbExec ( sqlLink, sqlQuery )
+
+--         outputDebugString(toJSON(key))
+--         outputDebugString(toJSON(value))
+--     end
+-- end)
+
+function setVehicleHandlingByModel(theVehicle) 
+    local modelId = getElementModel(theVehicle);
+
+    local sqlQuery = "SELECT * FROM handling WHERE model = '" .. modelId .. "'"
+
+    local result = dbPoll(dbQuery ( sqlLink, sqlQuery ), -1)
+    
+    local carStats = fromJSON(result[1].stats)
+    -- outputDebugString(carStats[1].stats)
+    
+    for key, value in pairs(carStats) do
+        setVehicleHandling(theVehicle, key, value)
+    end
+
+end
+addEvent("setVehicleHandlingByModelDB", true)
+addEventHandler("setVehicleHandlingByModelDB", root, setVehicleHandlingByModel)
+
 function setVehicleHandlingByModel(theVehicle) 
     local modelId = getElementModel(theVehicle);
 

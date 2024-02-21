@@ -1,58 +1,84 @@
 -- Создаем главное окно
 local screenWidth, screenHeight = guiGetScreenSize()
-local main_window = guiCreateWindow((screenWidth - 300) / 2, (screenHeight - 150) / 2, 300, 150, "Банковское окно", false)
-guiSetVisible(main_window, false)
+local browser = nil
+local bro = nil
 
--- Создаем кнопки
-local withdraw_button = guiCreateButton(20, 30, 100, 30, "Снять деньги", false, main_window)
-local deposit_button = guiCreateButton(130, 30, 100, 30, "Положить", false, main_window)
-local exit_button = guiCreateButton(240, 30, 50, 30, "Выход", false, main_window)
-local editBox = guiCreateEdit( 20, 100, 100, 30, "", false, main_window )
-guiEditSetMaxLength ( editBox, 128 )
-
--- Обработчик событий для кнопок
-addEventHandler("onClientGUIClick", withdraw_button, function()
-    local amount = tonumber(guiGetText(editBox))
-    if amount then
-        triggerServerEvent("withdraw", root, localPlayer, amount)
+-- Функция для отображения браузера
+function showBrowser()
+    if isElement(browser) then
+        screenWidth, screenHeight = guiGetScreenSize()
+        browser = guiCreateBrowser(0, 0, 20, 20, true, true, false)
+        bro = guiGetBrowser(browser)
+        guiSetInputMode("no_binds_when_editing")
+        guiSetVisible(bro, true)
+        addEventHandler('onClientBrowserCreated', bro, function()
+            loadBrowserURL(bro, "http://mta/local/data/index.html")
+            -- toggleBrowserDevTools(browser, true)
+        end)
     end
-end, false)
+end
 
-addEventHandler("onClientGUIClick", deposit_button, function()
-    local amount = tonumber(guiGetText(editBox))
-    if amount then
-        triggerServerEvent("deposit", root, localPlayer, amount)
+-- Функция для скрытия браузера
+function hideBrowser()
+    if isElement(browser) then
+        guiSetVisible(bro, false)
+        destroyElement(browser)
     end
-end, false)
-
-addEventHandler("onClientGUIClick", exit_button, function()
-    guiSetVisible(main_window, false)
-    showCursor(false)
-end, false)
+end
 
 local inChekPoint = false
+local is_open_browser = false
 
--- function MarkerHit ( hitPlayer, matchingDimension )
---     if hitPlayer == localPlayer  and not getPedOccupiedVehicle(localPlayer) then
---         inChekPoint = true
---     end
--- end
--- addEventHandler ( "onClientMarkerHit", getRootElement(), MarkerHit )
+
+-- Обработчик событий для маркеров которые были созданы в этом ресурсе
+function MarkerHit ( hitPlayer, matchingDimension )
+    local markerResource = getElementData(source, "resource")
+    if hitPlayer == localPlayer and markerResource == "banksystem" and not isPedInVehicle(hitPlayer) then
+        inChekPoint = true
+    end
+end
+addEventHandler ( "onClientMarkerHit", root, MarkerHit )
 
 function MarkerLeave ( hitPlayer, matchingDimension )
-    if hitPlayer == localPlayer then
+    local markerResource = getElementData(source, "resource")
+    if hitPlayer == localPlayer and markerResource == "banksystem" then
         inChekPoint = false
     end
 end
-addEventHandler ( "onClientMarkerLeave", getRootElement(), MarkerLeave )
+addEventHandler ( "onClientMarkerLeave", root, MarkerLeave )
 
 function ShowGUIBankomat()
     if inChekPoint then
-        guiSetVisible(main_window, true)
-        showCursor(true)
+        if is_open_browser then
+            hideBrowser()
+            is_open_browser = false
+            showCursor(false)
+        else
+            showBrowser()
+            is_open_browser = true
+            showCursor(true)
+        end
     end
 end
 bindKey("lalt", "down", ShowGUIBankomat)
+
+addEvent('onClientWithdraw', true)
+addEventHandler('onClientWithdraw', root, function(count)
+    triggerServerEvent("withdraw", root, localPlayer, count)
+end)
+
+addEvent('onClientDeposit', true)
+addEventHandler('onClientDeposit', root, function(count)
+    triggerServerEvent("deposit", root, localPlayer, count)
+end)
+
+addEvent('onClientUpdate', true)
+addEventHandler('onClientUpdate', root, function()
+    triggerServerEvent("update", root, localPlayer)
+    tmp = getElementData(localPlayer, "money")
+    executeBrowserJavascript(browser, "updatebalance(" .. tmp .. ")")
+end)
+
 
 function commandGetMoney()
     triggerServerEvent("getMoney", root, localPlayer)

@@ -46,7 +46,7 @@ addEventHandler("onTestDrive", root, function(player, selectedVehicle)
 
         table.insert(drivers, veh)     
         
-        triggerEvent("setVehicleHandlingByModel", root, veh)
+        triggerEvent("setVehicleHandlingByModelDB", root, veh)
         warpPedIntoVehicle(player,veh)
 
         local dimension = getFreeDimension()

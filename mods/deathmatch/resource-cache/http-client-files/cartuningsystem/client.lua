@@ -35,7 +35,12 @@ function toggleGui()
 end
 
 
-bindKey("[", "down", toggleGui)
+bindKey("[", "down", function()
+    -- local vehicle = getPedOccupiedVehicle(localPlayer)
+    -- if vehicle then
+        toggleGui()
+    -- end
+end)
 
 
 addEvent('engine', true)
@@ -43,6 +48,6 @@ addEventHandler( "engine", root, function()
     
     local vehicle = getPedOccupiedVehicle(localPlayer)
 
-    triggerServerEvent('engine', root, vehicle)
+    triggerServerEvent('engine', root, vehicle, localplayer)
 
 end)

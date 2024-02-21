@@ -1,0 +1,83 @@
+body{
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+p{
+    color: aliceblue;
+}
+h1{
+    color: aliceblue;
+    font-size: 14pt;
+}
+
+.left{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.right{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.button{
+    display: flex;
+    justify-content: center;
+    margin: 10px;
+    height: 20px;
+    width: 25px;
+    background-image: url(../img/button.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.button:hover{
+    box-shadow: 0px 0px 15px wheat;
+}
+
+.right > .button{
+    transform: scaleX(-1);
+}
+
+.output{
+    margin-top: 60px;
+    height: 290px;
+    width: 380px;
+    background-color: black;
+}
+
+.left > .button::after{
+    position: absolute;
+    transform: translateX(90px);
+    content: "Спиздить бабки";
+    background-color: aquamarine;
+    height: 20px;
+    width: 100px;
+}
+
+.main{
+    background-image: url("../img/main.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 500px;
+    width: 700px;
+
+    display: flex;
+    justify-content: center;
+}
+
+.balance{
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    margin-right: 10px;
+}
+
+.input_count{
+    display: flex;
+    justify-content: center;
+}
