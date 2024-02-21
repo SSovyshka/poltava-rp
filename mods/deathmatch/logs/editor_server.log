@@ -1,0 +1,30 @@
+==================================================================
+= Multi Theft Auto: San Andreas v1.6
+==================================================================
+= Server name      : Map Editor Server
+= Server IP address: auto
+= Server port      : 22010
+= 
+= Log file         : ..rver/mods/deathmatch/logs/editor_server.log
+= Maximum players  : 1
+= HTTP port        : 22011
+= Voice Chat       : Disabled
+= Bandwidth saving : None
+==================================================================
+[2024-02-21 15:51:37] Resource 'acpanel' requests some acl rights. Use the command 'aclrequest list acpanel'
+[2024-02-21 15:51:38] Resources: 207 loaded, 0 failed
+[2024-02-21 15:51:38] Starting resources...
+[2024-02-21 15:51:38] WARNING: edf <min_mta_version> section in the meta.xml is incorrect or missing (expected at least server 1.6.0-9.21765 because of 'isObjectBreakable')
+[2024-02-21 15:51:38] WARNING: edf requires upgrade as <min_mta_version> section in the meta.xml is incorrect or missing (expected at least server 1.6.0-9.21765 because of 'isObjectBreakable')
+[2024-02-21 15:51:38] Use the 'upgrade' command to perform a basic upgrade of resources.
+[2024-02-21 15:51:38] Server minclientversion is now 1.5.7-9.19626
+[2024-02-21 15:51:38] Server minclientversion is now 1.5.9-9.21313.0
+[2024-02-21 15:51:38] Server started and is ready to accept connections!
+[2024-02-21 15:51:38] To stop the server, type 'shutdown' or press Ctrl-C
+[2024-02-21 15:51:38] Type 'help' for a list of commands.
+[2024-02-21 15:51:39] CONNECT: Sovyshka connected (IP: 127.0.0.1  Serial: F1E0AB04532FA86176AA194DE8BBA9F3  Version: 1.6.0-9.22388.0)
+[2024-02-21 15:51:39] JOIN: Sovyshka joined the game (IP: 127.0.0.1)
+[2024-02-21 15:52:18] QUIT: Sovyshka left the game [Quit] 
+[2024-02-21 15:52:19] Server stopped!
+[2024-02-21 15:52:19] Stopping resources..........
+[2024-02-21 15:52:19] Closing SQLite3 database

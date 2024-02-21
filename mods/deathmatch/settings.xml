@@ -1,1 +1,3 @@
-<settings></settings>
+<settings>
+    <setting name="*editor_main.mapResourceOrganizationalDirectory" value='[&quot;none&quot;]'></setting>
+</settings>
