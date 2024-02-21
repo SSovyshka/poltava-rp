@@ -5,7 +5,7 @@ function playerStartJob( player ) -- Когда игрок заходит на �
     if getElementType(player) == 'player' and not getPedOccupiedVehicle(player) then
         if getElementData(player, 'job:isworking') then
             outputChatBox('[Робота] Ти звільнився!', player, 255, 0, 0)
-
+            triggerClientEvent(player, 'showLoader', root, false)
             playerEndJob( player )
         else
             setElementData(player, 'job:isworking', true)
@@ -14,6 +14,8 @@ function playerStartJob( player ) -- Когда игрок заходит на �
             setElementData(player, 'job:marker', nil)
             setElementData(player, 'job:collision', nil)
 
+            triggerClientEvent(player, 'showLoader', root, true)
+            
             outputChatBox('[Робота] Ти влаштувався!', player, 0, 255, 0)
             
             createPickUpMarker( player )

@@ -7,4 +7,5 @@
 
 	<!-- <export function="function" type="type(client/server/shared)" http="http(true/false)"/> -->
 	<export function="getFreeColisions" type="server" />
+	<export function="getFreeDimension" type="server" />
 </meta>

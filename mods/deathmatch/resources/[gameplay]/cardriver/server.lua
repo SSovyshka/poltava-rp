@@ -28,8 +28,7 @@ function handleVehicleEnter(vehicle, player)
             destroyElement(getElementData(vehicle, 'vehicle:marker'))
             destroyElement(getElementData(vehicle, 'vehicle:blip'))
             destroyElement(vehicle)
-
-            outputChatBox(health * 10)
+            
             givePlayerMoney(player, health * 10)
         end
     end)
@@ -43,6 +42,11 @@ function handleVehicleExit(vehicle)
     if getElementData(vehicle, 'vehicle:marker') then
         destroyElement(getElementData(vehicle, 'vehicle:marker'))
     end
+
+    -- local timer = setTimer( function()
+    --     destroyElement(vehicle)
+    -- end, 5 * 1000, 1)
+    -- setElementData(vehicle, 'vehicle:timer', timer)
 end
 
 function startDriveJob(player)
@@ -54,9 +58,14 @@ function startDriveJob(player)
 
         if vehicle then
             local random = math.random(1, #endDrivePosition)
+            -- local timer = setTimer( function()
+            --     destroyElement(vehicle)
+            -- end, 10 * 1000, 1)
+
             setElementData(vehicle, 'vehicle:enddrivepoint:x', endDrivePosition[random][1])
             setElementData(vehicle, 'vehicle:enddrivepoint:y', endDrivePosition[random][2])
             setElementData(vehicle, 'vehicle:enddrivepoint:z', endDrivePosition[random][3])
+            -- setElementData(vehicle, 'vehicle:timer', timer)
 
             addEventHandler("onVehicleEnter", vehicle, function()
                 handleVehicleEnter(vehicle, player)
