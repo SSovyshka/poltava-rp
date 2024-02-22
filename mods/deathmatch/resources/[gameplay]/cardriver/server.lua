@@ -11,6 +11,7 @@ function createCollisions()
         setElementData(collision, 'collision:vehicle:z', z)
         table.insert(collisions, collision)
     end
+    
 end
 
 function handleVehicleEnter(vehicle, player)
