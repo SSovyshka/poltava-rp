@@ -1,12 +1,11 @@
 local loaderVisible = false
+local screenWidth, screenHeight = guiGetScreenSize()
+local squareWidth, squareHeight = 400, 200        
+local marginX, marginY = 50, 550
 
 
 function drawStuff( )
     if loaderVisible then
-        
-        local screenWidth, screenHeight = guiGetScreenSize()
-        local squareWidth, squareHeight = 400, 200
-        local marginX, marginY = 50, 550
         local counter = getElementData(getLocalPlayer( ), 'job:box:counter')
 
 

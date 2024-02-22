@@ -15,8 +15,8 @@ function playerStartJob( player ) -- Когда игрок заходит на �
             setElementData(player, 'job:collision', nil)
 
             triggerClientEvent(player, 'showLoader', root, true)
-            
-            outputChatBox('[Робота] Ти влаштувався!', player, 0, 255, 0)
+
+            outputChatBox('[Робота] Ти влаштувався на роботу!', player, 0, 255, 0)
             
             createPickUpMarker( player )
         end
@@ -128,7 +128,6 @@ function createPutDownMarker( player ) -- Создание маркера для
                 destroyElement(getElementData(player, 'job:box:object'))
                 
                 outputChatBox(getElementData(player, 'job:box:counter') .. " = " .. getElementData(player, 'job:box:counter') * 100, player, 0, 255, 0)
-                -- triggerClientEvent(player, 'updateLoader', root, player)
                 playerToggleControll(player, true)
 
                 
