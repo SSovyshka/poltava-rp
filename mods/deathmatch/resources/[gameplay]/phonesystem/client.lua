@@ -1,8 +1,6 @@
 local browserGUI, browser, selectedVehicle, vehicle = nil
 local toggle, testDrive = false
 
--- setDevelopmentMode(true, true) -- Enable client dev mode
-
 
 
 -----__ (Клиент -> Сервер) __-----
@@ -23,7 +21,7 @@ end)
 addEvent('testCarS', true)
 addEventHandler('testCarS', getRootElement(), function(jsonArray)
     local json = toJSON(jsonArray)
-    json = string.sub(json, 2, -2)  -- Убираем квадратные скобки в начале и в конце
+    json = string.sub(json, 2, -2)  
     executeBrowserJavascript(browser, string.format([[ 
         let carList = %s;
         setCarList(carList);
@@ -41,7 +39,6 @@ function guiPhone(bool)
         -- guiSetInputMode("no_binds_when_editing")
         addEventHandler('onClientBrowserCreated', browser, function()
             loadBrowserURL(browser, "http://mta/local/data/index.html")
-            -- toggleBrowserDevTools(browser, true) -- Toggle the CEF dev console
         end)
     else
         if isElement(browserGUI) then

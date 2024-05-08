@@ -4,6 +4,14 @@
     <script src="server.lua" type="server"/>
 	<script src="client.lua" type="client"/>
 
+	<script src="aspects_client/deposit.lua" type="client"/>
+	<script src="aspects_client/money.lua" type="client"/>
+
+	<script src="aspects_server/deposit.lua" type="server"/>
+	<script src="aspects_server/money.lua" type="server"/>
+	<script src="aspects_server/db.lua" type="server"/>
+
+
 	<file src="data/script/script.js"/>
 	<file src="data/index.html"/>
     <file src="data/css/style.css"/>

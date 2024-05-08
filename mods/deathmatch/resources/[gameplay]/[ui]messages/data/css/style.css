@@ -1,0 +1,33 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.message{
+    font-size: 17px;
+    display: flex;
+    width: 300px;
+    color: white;
+    align-items: center;
+    padding:15px;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+
+.message > img{
+    width: 25px;
+    height: 25px;
+    margin-right: 10px;
+}
+
+.alert{
+    background-color: rgb(215,90,74);
+}
+
+.interapted{
+    background-color: rgb(235,186,22);
+}
+
+.success{
+    background-color: rgb(37,174,136);
+}

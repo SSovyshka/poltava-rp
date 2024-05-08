@@ -1,0 +1,5 @@
+-- addEvent('smaaa', true)
+-- addEventHandler('smaaa', root, function( player, message )
+--     outputDebugString( getPlayerName( player ).." ".. message)
+--     -- triggerClientEvent(player, 'showSuccessMessage', root, tostring(message) )
+-- end)

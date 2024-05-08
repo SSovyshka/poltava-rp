@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    
+</head>
+<body>
+    <script src="script/script.js" defer></script>
+    <div class="container">
+        <div class="job-info">
+            <h1>Фермер</h1>
+
+            <hr class="text-opus">
+            <p>Привіт! Наша робота на фермі полягає у переміщенні сіна з місця збирання до місця зберігання чи використання. На фермі доступні три основні види робіт: переносчик, водій грузовика та водій комбайна. Наша головна мета - забезпечити ефективне та безпечне переміщення сіна для подальшого використання у господарстві. Поїхали, фермере! Давай використовувати наші знання та силу, щоб успішно впоратися з цим завданням!</p>
+
+            <hr class="text-info">
+            <p>
+                <b>Рівень 1: Переносник сіна</b><br>
+
+                На першому рівні фермер виконує роль переносника сіна. Йому потрібно пройти через 5 точок на полі, збираючи сіно і переносити його до пункту здачі.
+            </p>
+            <p>
+                <b>Рівень 2: Водій вантажівки</b><br>
+
+                На другому рівні фермер переходить до складніших завдань як водій вантажівки. Тепер йому необхідно завантажити вантажівку сіном і доставити його на завод.
+            </p>
+            <p>
+                <b>Рівень 3: Водій комбайна</b><br>
+
+                На останньому рівні фермеру доведеться взяти на себе роль водія комбайна. Він повинен проїхати по полю, зібрати сіно і доставити його до пункту здачі вантажу.
+            </p>
+
+            <hr class="text-riven">
+            <div class="level-container">
+                <div>
+                    <p>Переносник сіна</p>
+                    <div class="progress-container">
+                        <div class="progress-bar" id="progress-bar1"></div>
+                    </div>
+                </div>
+                <div>
+                    <p>Водій вантажівки</p>
+                    <div class="progress-container">
+                        <div class="progress-bar" id="progress-bar2"></div>
+                    </div>
+                </div>
+                <div>
+                    <p>Водій комбайна</p>
+                    <div class="progress-container">
+                        <div class="progress-bar" id="progress-bar3"></div>
+                    </div>
+                </div>
+            </div>
+            
+
+        </div>
+        <div class="job-buttons">
+            <div class="buttons-block">
+                <div class="job-button job-button-accept farmer-level-1">Складальник сіна <br>[1 рівень]</div>
+                <div class="job-button job-button-accept farmer-level-2">Водій вантажівки <br>[2 рівень]</div>
+                <div class="job-button job-button-noactive farmer-level-3">Водій комбайну <br>[3 рівень]</div>
+            </div>
+            <div class="job-button job-button-allow">Відмовитись</div>
+        </div>
+    </div>
+
+
+
+</body>
+</html>

@@ -69,6 +69,7 @@ addEventHandler("getMoney", root, commandGetMoney)
 function commandUpdate(client)
     money = checkIfCreated(client)
     setElementData(client, "money", money)
+    triggerClientEvent("jsexecute", client)
 end
 addEvent("update", true)
 addEventHandler("update", root, commandUpdate)

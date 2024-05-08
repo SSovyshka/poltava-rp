@@ -50,11 +50,13 @@ h1{
     background-color: black;
 }
 
-.left > .button::after{
+
+.left > .button > .button-text{
     position: absolute;
     transform: translateX(90px);
-    content: "Спиздить бабки";
     background-color: aquamarine;
+    border-radius: 15px;
+    text-align: center;
     height: 20px;
     width: 100px;
 }

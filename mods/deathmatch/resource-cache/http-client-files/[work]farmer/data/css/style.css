@@ -1,0 +1,198 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: "Roboto", sans-serif;
+}
+
+body{
+    width: 1920px;
+    height: 1080px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+hr {
+    margin: 20px 10px;
+    border: none;
+    height: 1px;
+    background: white;
+    overflow: visible;
+    text-align: center;
+}
+hr::after {
+    position: relative;
+    top: -10px;
+    font-size: 18px;
+    background: black;
+    color:white;
+    padding: 0 5px;
+}
+
+.text-opus::after{
+    content: 'Опис';
+}
+
+.text-info::after{
+    content: 'Інформація';
+}
+
+.text-riven::after{
+    content: 'Рівень';
+}
+
+
+.container{
+    position: relative;
+
+    border-radius: 8px;
+    padding: 35px;
+    width: 550px;
+    height: auto;
+    background-color: black;
+}
+
+.container:before {
+    content:"";
+    position: absolute;
+    inset: -5px;
+    /*transform: translate(10px,8px);*/
+    z-index: -1;
+    background: conic-gradient(from 90deg at 40% -25%, #76aa9a, #83a68f, #9aa07e, #aa9b71, #b49c80, #bc9c8c, #c29c94, #cd9da5);
+    filter: blur(15px);
+}
+
+.job-info{
+    width: 100%;
+    height: auto;
+    margin-bottom: 20px;
+}
+
+.job-info > h1{
+    font-size: 24px;
+    color: white;
+    margin: 10px;
+    text-align: center;
+}
+
+.job-info > h2{
+    margin-left: 10px;
+    font-size: 18px;
+    color: white;
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+
+.job-info > p{
+    font-size: 16px;
+    color: white;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+
+}
+
+.job-buttons{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    width: 100%;
+    height: auto;
+}
+
+.buttons-block{
+    display: flex;
+    flex-direction: row;
+}
+
+.job-button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+
+
+    width: 200px;
+    height: 45px;
+    margin: 10px;
+}
+
+.job-button-accept{
+    width: 170px;
+    border-radius: 20px;
+    border-color: #48a18c;
+    color: #fff;
+    box-shadow: 0 0 40px 40px #48a18c inset, 0 0 0 0 #48a18c;
+    transition: all 100ms ease-in-out;
+}
+
+.job-button-accept:hover {
+    box-shadow: 0 0 10px 0 #48a18c inset, 0 0 10px 4px #48a18c;
+}
+
+.job-button-noactive{
+    width: 170px;
+    border-radius: 20px;
+    border-color: #4A504FFF;
+    color: #fff;
+    box-shadow: 0 0 40px 40px #4A504FFF inset, 0 0 0 0 #4A504FFF;
+    transition: all 100ms ease-in-out;
+}
+
+.job-button-noactive:hover {
+    box-shadow: 0 0 10px 0 #a2606f inset, 0 0 10px 4px #a2606f;
+}
+
+.job-button-allow{
+    border-radius: 20px;
+    border-color: #a2606f;
+    color: #fff;
+    box-shadow: 0 0 40px 40px #a2606f inset, 0 0 0 0 #a2606f;
+    transition: all 100ms ease-in-out;
+}
+
+.job-button-allow:hover {
+    box-shadow: 0 0 10px 0 #a2606f inset, 0 0 10px 4px #a2606f;
+}
+
+.level-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.level-container > div > p{
+    margin-bottom: 10px;
+    color: white; 
+    text-align: center;
+}
+
+.level-container > div{
+    width: 30%;
+}
+
+.level-container > div > span{
+    display: flex;
+    overflow: hidden;
+    border-radius:50px;
+    max-width: 600px;
+    width: 100%;
+    height: 20px;
+    background-color: gray;
+}
+
+.progress-container{
+
+    width: 100%;
+    background-color: rgb(75, 75, 75);
+    height: 20px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+  
+.progress-bar {
+    height: 100%;
+    background-color: aqua;
+    border-radius: 10px;
+}

@@ -1,3 +1,21 @@
+
+
+function commandGetMoney()
+    money = money_module.get_money()
+    outputChatBox(tostring(money))
+end
+addCommandHandler("pip", commandGetMoney)
+
+
+
+
+
+
+
+
+
+
+
 -- Создаем главное окно
 local screenWidth, screenHeight = guiGetScreenSize()
 local browser = nil
@@ -5,23 +23,22 @@ local bro = nil
 
 -- Функция для отображения браузера
 function showBrowser()
-    if isElement(browser) then
-        screenWidth, screenHeight = guiGetScreenSize()
-        browser = guiCreateBrowser(0, 0, 20, 20, true, true, false)
-        bro = guiGetBrowser(browser)
-        guiSetInputMode("no_binds_when_editing")
-        guiSetVisible(bro, true)
-        addEventHandler('onClientBrowserCreated', bro, function()
-            loadBrowserURL(bro, "http://mta/local/data/index.html")
-            -- toggleBrowserDevTools(browser, true)
-        end)
-    end
+    
+    screenWidth, screenHeight = guiGetScreenSize()
+    browser = guiCreateBrowser(0, 0, screenWidth, screenHeight, true, true, false)
+    bro = guiGetBrowser(browser)
+    guiSetInputMode("no_binds_when_editing")
+    addEventHandler('onClientBrowserCreated', bro, function()
+        loadBrowserURL(bro, "http://mta/local/data/index.html")
+    end)
+    addEventHandler('onClientBrowserDocumentReady', bro, function()
+        executeBrowserJavascript(bro, "prestart()")
+    end)
 end
 
 -- Функция для скрытия браузера
 function hideBrowser()
     if isElement(browser) then
-        guiSetVisible(bro, false)
         destroyElement(browser)
     end
 end
@@ -65,18 +82,24 @@ bindKey("lalt", "down", ShowGUIBankomat)
 addEvent('onClientWithdraw', true)
 addEventHandler('onClientWithdraw', root, function(count)
     triggerServerEvent("withdraw", root, localPlayer, count)
+    triggerServerEvent("update", root, localPlayer)
 end)
 
 addEvent('onClientDeposit', true)
 addEventHandler('onClientDeposit', root, function(count)
     triggerServerEvent("deposit", root, localPlayer, count)
+    triggerServerEvent("update", root, localPlayer)
 end)
 
 addEvent('onClientUpdate', true)
 addEventHandler('onClientUpdate', root, function()
     triggerServerEvent("update", root, localPlayer)
+end)
+
+addEvent('jsexecute', true)
+addEventHandler('jsexecute', root, function()
     tmp = getElementData(localPlayer, "money")
-    executeBrowserJavascript(browser, "updatebalance(" .. tmp .. ")")
+    executeBrowserJavascript(bro, "updatebalance(" .. tmp .. ")")
 end)
 
 
