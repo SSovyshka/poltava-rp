@@ -11,7 +11,7 @@ function playerStartFarmerJob( player ) -- Когда игрок заходит 
         if getElementData(player, 'job:isworking') then
             outputChatBox('[Робота] Ти звільнився!', player, 255, 0, 0)
             triggerClientEvent(player, 'showFarmerJobGUI', root, false)
-            playerEndJob( player )
+            playerEndFarmerJob( player )
         else
             setElementData(player, 'job:isworking', true)
             setElementData(player, 'player:work', "farmer_1")
@@ -35,7 +35,7 @@ addEvent('startFarmerJobLevel1Server', true)
 addEventHandler( 'startFarmerJobLevel1Server', root, playerStartFarmerJob )
 
 
-function playerEndJob( player ) -- Когда игрок заканчивает работу
+function playerEndFarmerJob( player ) -- Когда игрок заканчивает работу
     givePlayerPayday( player )
     
     if getElementData(player, 'job:marker') then

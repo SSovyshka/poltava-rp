@@ -39,6 +39,12 @@ addEventHandler("onColShapeHit", collision2, function(hitElement)
                 setElementData(hitElement, "vehicle:seno2", seno2)
 
                 setElementFrozen(hitElement, false)
+
+                
+                destroyElement(getElementData(hitElement, "vehicle:blip"))
+                local blip = createBlip(2114.73145, -1779.30017, 0, 0, 2, 255, 0, 0, 255)
+                setElementData(hitElement, "vehicle:blip", blip)
+
             end, 5000, 1)
             
         end
@@ -63,6 +69,10 @@ addEventHandler("onColShapeHit", collision3, function(hitElement)
 
                 givePlayerMoney(player, 15000)
 
+                destroyElement(getElementData(hitElement, "vehicle:blip"))
+                local blip = createBlip(-1192.28943, -1184.84863, 0, 0, 2, 255, 0, 0, 255)
+                setElementData(hitElement, "vehicle:blip", blip)
+
                 local sqlQuery = "UPDATE farmer SET experience_level_2 = experience_level_2 + 1 WHERE player = '" .. getPlayerName(player) .. "'"
                 dbExec(sqlLink, sqlQuery)
             end, 5000, 1)
@@ -76,7 +86,7 @@ function playerStartFarmDriverJob( player )
         if getElementData(player, 'job:isworking') then
             outputChatBox('[Робота] Ти звільнився!', player, 255, 0, 0)
             
-            playerEndJob( player )
+            playerEndFarmerDriveJob( player )
         else
             setElementData(player, 'job:isworking', true)
 
@@ -91,6 +101,18 @@ function playerStartFarmDriverJob( player )
 end
 addEvent( 'startFarmerJobLevel2Server', true )
 addEventHandler( 'startFarmerJobLevel2Server', root, playerStartFarmDriverJob )
+
+
+
+function playerEndFarmerDriveJob( player ) -- Когда игрок заканчивает работу
+    
+    setElementData(player, 'player:work', nil, true)
+    setElementData(player, 'job:isworking', nil, true)
+    
+    -- setPedAnimation(player, 'CARRY', 'putdwn', 0, false, false, false, false)
+    playerToggleControll(player, true)
+
+end
 
 
 function createCollisions()
@@ -127,7 +149,7 @@ function createVehicleInFreeColision()
         
             local vehicleTenant = getElementData(vehicle, "vehicle:tenant")
             if not vehicleTenant then
-                if rentedVehicle and rentedVehicle ~= vehicle then
+                if rentedVehicle and rentedVehicle ~= vehicle and rentedVehicle ~= nil then
                     cancelEvent()
                     return
                 end
@@ -140,8 +162,8 @@ function createVehicleInFreeColision()
             end
         end)
 
-        addEventHandler("onVehicleEnter", vehicle, function()
-            local blip = createBlip(2114.73145, -1779.30017, 0, 0, 2, 255, 0, 0, 255)
+        addEventHandler("onVehicleEnter", vehicle, function(player)
+            local blip = createBlip(-1192.28943, -1184.84863, 0, 0, 2, 255, 0, 0, 255)
             setElementData(vehicle, "vehicle:blip", blip)
         end)
 
@@ -151,10 +173,11 @@ function createVehicleInFreeColision()
             end
         end)
 
-        addEventHandler('onVehicleExplode', vehicle, function()
+        addEventHandler('onVehicleExplode', vehicle, function(player)
             destroyElement(getElementData(vehicle, "vehicle:seno"))
             destroyElement(getElementData(vehicle, "vehicle:seno2"))
             destroyElement(getElementData(vehicle, "vehicle:blip"))
+            setElementData(getElementData(source, "vehicle:tenant"), 'player:isRented', nil)
         end)
 
 
