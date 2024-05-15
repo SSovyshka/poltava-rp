@@ -1,7 +1,14 @@
 local collisions = {}
+
+
 local prl = exports['[library]poltavarp']
-local collision2 = createColRectangle(-726 - 2.5, 970 - 2.5, 5, 5)
-local collision3 = createColRectangle(-726 - 2.5, 986 - 2.5, 5, 5)
+
+
+local collision2 = createColRectangle(-1192.01965 - 2.5, -1184.74976 - 2.5, 5, 5)
+local collision3 = createColRectangle(2114.73145 - 2.5, -1779.30017 - 2.5, 5, 5)
+
+
+local getCarBlip = createMarker(-1101.90564, -1250.54358, 128.21875, "cylinder", 1.25, 255, 255, 255, 150)
 local sqlLink = dbConnect ( 
     "sqlite", -- тип базы данных 
     ":/works.db" -- путь к файлу БД 
@@ -100,59 +107,57 @@ addEventHandler("onResourceStart", resourceRoot, createCollisions)
 
 
 function createVehicleInFreeColision()
-    setTimer(function()
-        local freeColision = prl:getFreeColisions(collisions, "vehicle");
+    local freeColision = prl:getFreeColisions(collisions, "vehicle");
 
-        if freeColision then
-            local x, y, z = getElementData(freeColision, 'collision:vehicle:x'), getElementData(freeColision, 'collision:vehicle:y'), getElementData(freeColision, 'collision:vehicle:z')
-            local vehicle = createVehicle(578, x, y, z)
+    if freeColision then
+        local x, y, z = getElementData(freeColision, 'collision:vehicle:x'), getElementData(freeColision, 'collision:vehicle:y'), getElementData(freeColision, 'collision:vehicle:z')
+        local vehicle = createVehicle(578, x, y, z)
 
-            setElementData(vehicle, "vehicle:tenant", nil)
-            setElementData(vehicle, "vehicle:isloaded", false)
-            setElementData(vehicle, "vehicle:work", 'farmer_2')
+        setElementData(vehicle, "vehicle:tenant", nil)
+        setElementData(vehicle, "vehicle:isloaded", false)
+        setElementData(vehicle, "vehicle:work", 'farmer_2')
 
-            addEventHandler("onVehicleStartEnter", vehicle, function(player)
-                local playerWork = getElementData(player, 'player:work')
-                local rentedVehicle = getElementData(player, 'player:isRented')
-                if not playerWork or playerWork ~= "farmer_2" then
+        addEventHandler("onVehicleStartEnter", vehicle, function(player)
+            local playerWork = getElementData(player, 'player:work')
+            local rentedVehicle = getElementData(player, 'player:isRented')
+            if not playerWork or playerWork ~= "farmer_2" then
+                cancelEvent()
+                return
+            end
+        
+            local vehicleTenant = getElementData(vehicle, "vehicle:tenant")
+            if not vehicleTenant then
+                if rentedVehicle and rentedVehicle ~= vehicle then
                     cancelEvent()
                     return
                 end
-            
-                local vehicleTenant = getElementData(vehicle, "vehicle:tenant")
-                if not vehicleTenant then
-                    if rentedVehicle and rentedVehicle ~= vehicle then
-                        cancelEvent()
-                        return
-                    end
 
-                    
-                    setElementData(vehicle, "vehicle:tenant", player)
-                    setElementData(player, 'player:isRented', vehicle)
-                elseif vehicleTenant ~= player then
-                    cancelEvent()
-                end
-            end)
+                
+                setElementData(vehicle, "vehicle:tenant", player)
+                setElementData(player, 'player:isRented', vehicle)
+            elseif vehicleTenant ~= player then
+                cancelEvent()
+            end
+        end)
 
-            addEventHandler("onVehicleEnter", vehicle, function()
-                local blip = createBlip(-726, 986, 0, 0, 2, 255, 0, 0, 255)
-                setElementData(vehicle, "vehicle:blip", blip)
-            end)
+        addEventHandler("onVehicleEnter", vehicle, function()
+            local blip = createBlip(2114.73145, -1779.30017, 0, 0, 2, 255, 0, 0, 255)
+            setElementData(vehicle, "vehicle:blip", blip)
+        end)
 
-            addEventHandler("onVehicleExit", vehicle, function()
-                if getElementData(vehicle, "vehicle:blip") then
-                    destroyElement(getElementData(vehicle, "vehicle:blip"))
-                end
-            end)
-
-            addEventHandler('onVehicleExplode', vehicle, function()
-                destroyElement(getElementData(vehicle, "vehicle:seno"))
-                destroyElement(getElementData(vehicle, "vehicle:seno2"))
+        addEventHandler("onVehicleExit", vehicle, function()
+            if getElementData(vehicle, "vehicle:blip") then
                 destroyElement(getElementData(vehicle, "vehicle:blip"))
-            end)
+            end
+        end)
 
-    
-        end
-    end, 1000, 0)
+        addEventHandler('onVehicleExplode', vehicle, function()
+            destroyElement(getElementData(vehicle, "vehicle:seno"))
+            destroyElement(getElementData(vehicle, "vehicle:seno2"))
+            destroyElement(getElementData(vehicle, "vehicle:blip"))
+        end)
+
+
+    end
 end
-addEventHandler("onResourceStart", resourceRoot, createVehicleInFreeColision)
+addEventHandler("onMarkerHit", getCarBlip, createVehicleInFreeColision)

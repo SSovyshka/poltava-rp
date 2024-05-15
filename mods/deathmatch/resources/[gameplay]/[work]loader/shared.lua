@@ -1,10 +1,10 @@
 salaryMultiplier = 100
 
-startJobPositionMarker = {-709.34937, 959.55566, 12.44794}
+startJobPositionMarker = {1379.01843, 1156.15515, 10.82031}
 
 boxPickupPotition = { 
-	{-718.33533, 963.78796, 12.13281}
+	{1404.14294, 1147.68555, 10.82031}
 }
 
-boxPutdownPosition = {-712.36279, 974.44806, 12.35864}
+boxPutdownPosition = {1430.46350, 1045.39526, 10.81298}
 

@@ -103,6 +103,6 @@ end)
 
 
 addEventHandler("onClientRender", root, function()
-    prl:drawPolyhedron({-726, 970, 12-0.5}, 4, 4, 45)
-    prl:drawPolyhedron({-726, 986, 12-0.37}, 4, 4, 45)
+    prl:drawPolyhedron({-1192.01965, -1184.74976, 128.35}, 4, 4, 45)
+    prl:drawPolyhedron({2114.73145, -1779.30017, 12.38980}, 4, 4, 45)
 end)

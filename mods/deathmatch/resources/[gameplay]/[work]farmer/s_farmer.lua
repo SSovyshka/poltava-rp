@@ -78,16 +78,6 @@ function givePlayerPayday( player ) -- Выдача зарплаты игрок�
         local counter = getElementData(player, 'job:box:counter')
         local salary = 0 
         
-        if counter >= 20 and counter <= 39 then
-            salary = counter * salaryMultiplier * 0.05
-        elseif counter >= 40 and counter < 59 then
-            salary = counter * salaryMultiplier * 0.10
-        elseif counter >= 60  and counter < 99 then
-            salary = counter * salaryMultiplier * 0.15
-        elseif counter >= 100 then
-            salary = counter * salaryMultiplier * 0.20
-        end
-        
         givePlayerMoney( player, counter * salaryMultiplier + salary )
 
         local sqlQuery = "UPDATE farmer SET experience_level_1 = experience_level_1 + ".. getElementData(player, 'job:box:counter') .." WHERE player = '" .. getPlayerName(player) .. "'"
@@ -97,81 +87,128 @@ function givePlayerPayday( player ) -- Выдача зарплаты игрок�
 end
 
 
-function createPickUpMarker( player ) -- Создание маркера для поднятия груза
-    local random = math.random(1, #pickupPosition)
-    local x, y, z = pickupPosition[random][1], pickupPosition[random][2], pickupPosition[random][3]
+-- function createPickUpMarker( player ) -- Создание маркера для поднятия груза
+--     local random = math.random(1, #pickupPosition)
+--     local x, y, z = pickupPosition[random][1], pickupPosition[random][2], pickupPosition[random][3]
 
-    local marker = createMarker( x, y, z-1, 'cylinder', 1.5, 255, 0, 0, 150, player )
-    local collision = createColSphere( x, y, z-1, 1.5 )
+--     local marker = createMarker( x, y, z-1, 'cylinder', 1.5, 255, 0, 0, 150, player )
+--     local collision = createColSphere( x, y, z-1, 1.5 )
 
-    setElementData(collision, 'job:player', player)
+--     setElementData(collision, 'job:player', player)
 
-    setElementData(player, 'job:marker', marker)
-    setElementData(player, 'job:collision', collision)
+--     setElementData(player, 'job:marker', marker)
+--     setElementData(player, 'job:collision', collision)
 
-    addEventHandler('onColShapeHit', collision, function( player )
-        if getElementType(player) == 'player' and getElementData(collision, 'job:player') == player and not getPedOccupiedVehicle(player) then
-            destroyElement(getElementData(player, 'job:marker'))
-            destroyElement(getElementData(player, 'job:collision'))
+--     addEventHandler('onColShapeHit', collision, function( player )
+--         if getElementType(player) == 'player' and getElementData(collision, 'job:player') == player and not getPedOccupiedVehicle(player) then
+--             destroyElement(getElementData(player, 'job:marker'))
+--             destroyElement(getElementData(player, 'job:collision'))
             
-            setPedAnimation(player, 'BOMBER', 'bom_plant', 1, false)
-            setTimer(function()
-                setPedAnimation(player, 'BOMBER', 'bom_plant', 0, false, false, false, false)
+--             setPedAnimation(player, 'BOMBER', 'bom_plant', 1, false)
+--             setTimer(function()
+--                 setPedAnimation(player, 'BOMBER', 'bom_plant', 0, false, false, false, false)
 
-                playerToggleControll( player, false )
+--                 playerToggleControll( player, false )
 
-                if getElementData(player, 'job:box:counternextmarker') ~= 4 then
-                    createPickUpMarker( player )
-                    setElementData(player, 'job:box:counternextmarker', getElementData(player, 'job:box:counternextmarker') + 1)
-                else
+--                 if getElementData(player, 'job:box:counternextmarker') ~= 4 then
+--                     createPickUpMarker( player )
+--                     setElementData(player, 'job:box:counternextmarker', getElementData(player, 'job:box:counternextmarker') + 1)
+--                 else
 
-                    local box = createObject(3374, 0, 0, 0)
-                    setObjectScale(box, 0.04)
-                    setElementData(player, 'job:box:object', box)
-                    exports.bone_attach:attachElementToBone(box, player, 12, 0, 0.1, 0.1, 0, 0, 0)
+--                     local box = createObject(3374, 0, 0, 0)
+--                     setObjectScale(box, 0.04)
+--                     setElementData(player, 'job:box:object', box)
+--                     exports.bone_attach:attachElementToBone(box, player, 12, 0, 0.1, 0.1, 0, 0, 0)
 
-                    createPutDownMarker( player )
-                    setElementData(player, 'job:box:counternextmarker', 0)
-                end
+--                     createPutDownMarker( player )
+--                     setElementData(player, 'job:box:counternextmarker', 0)
+--                 end
 
-            end, 2500, 1)
+--             end, 2500, 1)
         
-        end
-    end)
+--         end
+--     end)
 
-end
+-- end
 
 
-function createPutDownMarker( player ) -- Создание маркера для сдачи груза
-    local x, y, z = putdownPosition[1], putdownPosition[2], putdownPosition[3]
+-- function createPutDownMarker( player ) -- Создание маркера для сдачи груза
+--     local x, y, z = putdownPosition[1], putdownPosition[2], putdownPosition[3]
 
-    local marker = createMarker( x, y, z-1, 'cylinder', 1.5, 255, 0, 0, 150, player)
-    local collision = createColSphere( x, y, z-1, 1.5 )
+--     local marker = createMarker( x, y, z-1, 'cylinder', 1.5, 255, 0, 0, 150, player)
+--     local collision = createColSphere( x, y, z-1, 1.5 )
 
-    setElementData(collision, 'job:player', player)
+--     setElementData(collision, 'job:player', player)
 
-    setElementData(player, 'job:marker', marker)
-    setElementData(player, 'job:collision', collision)
+--     setElementData(player, 'job:marker', marker)
+--     setElementData(player, 'job:collision', collision)
 
-    addEventHandler('onColShapeHit', collision, function( player )
-        if getElementType(player) == 'player' and getElementData(collision, 'job:player') == player and not getPedOccupiedVehicle(player) then
+--     addEventHandler('onColShapeHit', collision, function( player )
+--         if getElementType(player) == 'player' and getElementData(collision, 'job:player') == player and not getPedOccupiedVehicle(player) then
 
-            destroyElement(getElementData(player, 'job:marker'))
-            destroyElement(getElementData(player, 'job:collision'))
+--             destroyElement(getElementData(player, 'job:marker'))
+--             destroyElement(getElementData(player, 'job:collision'))
 
-            setPedAnimation(player,'CARRY','putdwn',1,false)
-            setTimer(function()
-                setPedAnimation(player,'CARRY', 'putdwn', 0, false, false, false, false)
-                setElementData(player, 'job:box:counter', getElementData(player, 'job:box:counter') + 1)
-                destroyElement(getElementData(player, 'job:box:object'))
+--             setPedAnimation(player,'CARRY','putdwn',1,false)
+--             setTimer(function()
+--                 setPedAnimation(player,'CARRY', 'putdwn', 0, false, false, false, false)
+--                 setElementData(player, 'job:box:counter', getElementData(player, 'job:box:counter') + 1)
+--                 destroyElement(getElementData(player, 'job:box:object'))
                 
-                playerToggleControll(player, true)
+--                 playerToggleControll(player, true)
+                
 
                 
-                createPickUpMarker( player )
-            end, 1000, 1)
+--                 createPickUpMarker( player )
+--             end, 1000, 1)
 
-        end
-    end)
+--         end
+--     end)
     
-end
+-- end
+
+
+addEventHandler("onResourceStart", resourceRoot, function()
+    local x, y, z = -1185, -1059, 128 
+    local j = 0 -- начальное значение переменной j
+
+    -- Создаем функцию, которая будет запускать итерации цикла с задержкой
+    local function delayedIteration()
+        for i = 0, 26, 1 do 
+            local senoDlyaSbora = createObject(864, x, y, z)
+            local senoDlyaSboraCol = createColSphere( x, y, z, 2)
+
+            addEventHandler("onColShapeHit", senoDlyaSboraCol, function(hitElement)
+                if getElementType(hitElement) == "player" and getElementData(hitElement, 'player:work') == "farmer_1"  then
+                    destroyElement(senoDlyaSboraCol)
+
+                    setPedAnimation(hitElement, 'BOMBER', 'bom_plant', 1, false)
+                    setTimer(function()
+                        setPedAnimation(hitElement, 'BOMBER', 'bom_plant', 0, false, false, false, false)
+
+                        playerToggleControll( hitElement, false )
+
+                        destroyElement(senoDlyaSbora)
+                        playerToggleControll( hitElement, true )
+
+
+                        setElementData(hitElement, 'job:box:counter', getElementData(hitElement, 'job:box:counter') + 1)
+
+                    end, 2500, 1)
+                end
+            end)
+
+            y = y + 5
+        end
+        y = -1059
+        x = x + 5
+
+        j = j + 1 -- увеличиваем j после каждой итерации
+        if j <= 35 then -- проверяем, достигли ли мы нужного количества итераций
+            setTimer(delayedIteration, 750, 1) -- вызываем delayedIteration снова через 1000 миллисекунд
+        end
+    end
+
+    -- Запускаем первую итерацию цикла
+    delayedIteration()
+end)
