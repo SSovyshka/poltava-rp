@@ -6,6 +6,7 @@
 
 	<script src='s_farmer.lua' type='server' cache='false' />
 	<script src='s_farmdriver.lua' type='server' cache='false' />
+	<script src='s_farmcombinedriver.lua' type='server' cache='false' />
 
 	<file src="data/index.html"/>
     <file src="data/css/style.css"/>
