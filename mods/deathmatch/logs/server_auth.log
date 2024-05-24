@@ -307,3 +307,8 @@
 [2024-05-16 04:16:19] LOGIN: (Everyone, Admin, Console) Sovyshka successfully logged in as 'sovyshka' (IP: 192.168.0.28  Serial: F1E0AB04532FA86176AA194DE8BBA9F3)
 [2024-05-21 11:39:31] LOGIN: (Everyone, Admin, Console) Sovyshka successfully logged in as 'sovyshka' (IP: 26.102.174.50  Serial: F1E0AB04532FA86176AA194DE8BBA9F3)
 [2024-05-21 11:49:53] LOGIN: (Everyone, Admin) stultus successfully logged in as 'stultus' (IP: 46.150.75.186  Serial: A4097AE9A3D84D3B7CA83FC3E036F5A1)
+[2024-05-24 00:47:50] LOGIN: (Everyone, Admin, Console) Sovyshka successfully logged in as 'sovyshka' (IP: 26.102.174.50  Serial: F1E0AB04532FA86176AA194DE8BBA9F3)
+[2024-05-24 06:46:58] LOGIN: Sovyshka tried to log in as 'sovyshka' with an invalid password (IP: 26.102.174.50  Serial: F1E0AB04532FA86176AA194DE8BBA9F3)
+[2024-05-24 06:47:06] LOGIN: (Everyone, Admin, Console) Sovyshka successfully logged in as 'sovyshka' (IP: 26.102.174.50  Serial: F1E0AB04532FA86176AA194DE8BBA9F3)
+[2024-05-24 17:03:28] LOGIN: Sovyshka tried to log in as 'sovyshka' with an invalid password (IP: 26.102.174.50  Serial: F1E0AB04532FA86176AA194DE8BBA9F3)
+[2024-05-24 17:03:36] LOGIN: (Everyone, Admin, Console) Sovyshka successfully logged in as 'sovyshka' (IP: 26.102.174.50  Serial: F1E0AB04532FA86176AA194DE8BBA9F3)
