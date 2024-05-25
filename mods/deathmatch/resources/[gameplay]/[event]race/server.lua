@@ -5,19 +5,19 @@ local sqlLink = dbConnect (
 
 local markerPositions = {
     {-1027.27307, 1853.36475, 59.95639},
-    {-864.41632, 1811.04004, 59.77836},
-    {-870.30963, 1987.82385, 59.66839},
-    {-603.52643, 2033.47778, 59.70575},
-    {-387.00378, 2079.34790, 60.54631},
-    {-478.66394, 1931.10315, 85.82182},
-    {-444.72250, 1761.92163, 71.53777},
-    {-415.25555, 1917.94897, 57.06921},
-    {-410.07343, 1695.83301, 39.08064},
-    {-401.68518, 1331.83899, 26.59405},
-    {-111.51012, 1259.12500, 16.32595},
-    {143.98485, 1170.50000, 15.04624},
-    {192.43878, 1070.12048, 18.84986},
-    {304.90695, 797.53424, 14.08217}
+    {-864.41632, 1811.04004, 59.77836}
+    -- {-870.30963, 1987.82385, 59.66839},
+    -- {-603.52643, 2033.47778, 59.70575},
+    -- {-387.00378, 2079.34790, 60.54631},
+    -- {-478.66394, 1931.10315, 85.82182},
+    -- {-444.72250, 1761.92163, 71.53777},
+    -- {-415.25555, 1917.94897, 57.06921},
+    -- {-410.07343, 1695.83301, 39.08064},
+    -- {-401.68518, 1331.83899, 26.59405},
+    -- {-111.51012, 1259.12500, 16.32595},
+    -- {143.98485, 1170.50000, 15.04624},
+    -- {192.43878, 1070.12048, 18.84986},
+    -- {304.90695, 797.53424, 14.08217}
 }
 
 local startRaceMarker = createMarker(-1197.63367, 1790.28711, 40.77487, "cylinder", 2, 255, 0, 255, 255)
@@ -42,20 +42,20 @@ local function saveRaceResult(playerName, raceTime)
                 local updateQuery = string.format("UPDATE race_1 SET time=%d WHERE player='%s'", raceTime, playerName)
                 local updateResult = dbExec(sqlLink, updateQuery)
                 if not updateResult then
-                    outputDebugString("Failed to update race result for player " .. playerName)
+                    outputDebugString("Ошибка обновления статискики игрока" .. playerName)
                 end
             else
-                outputDebugString("New race time is greater than the current time for player " .. playerName)
+                outputDebugString("Новое время біло вставленно " .. playerName)
             end
         else
             local insertQuery = string.format("INSERT INTO race_1 (player, time) VALUES ('%s', %d)", playerName, raceTime)
             local insertResult = dbExec(sqlLink, insertQuery)
             if not insertResult then
-                outputDebugString("Failed to save race result for player " .. playerName)
+                outputDebugString("Ошибка сохранения игрока в базу данніх" .. playerName)
             end
         end
     else
-        outputDebugString("Failed to query race result for player " .. playerName)
+        outputDebugString("Ошибка запроса" .. playerName)
     end
 end
 
@@ -94,6 +94,8 @@ local function onCheckpointHit(hitElement)
 
             saveRaceResult(getPlayerName(getVehicleOccupant( hitElement, 0 )), raceTime)
 
+            triggerClientEvent(getVehicleOccupant(hitElement, 0), "onClientRenderRace", root, false)
+
             return
         end
         
@@ -112,6 +114,7 @@ local function startRace(hitElement)
 
     warpPedIntoVehicle(hitElement, vehicle, 0)
 
+    triggerClientEvent(hitElement, "onClientRenderRace", root, true)
     setTimer(function()
         setElementFrozen(vehicle, false)
         currentMarkerIndex = 1
@@ -120,6 +123,7 @@ local function startRace(hitElement)
         addEventHandler('onMarkerHit', raceCheckpoint, onCheckpointHit)
 
         startTime = getTickCount()
+        
     end, 3000, 1)
 end
 
