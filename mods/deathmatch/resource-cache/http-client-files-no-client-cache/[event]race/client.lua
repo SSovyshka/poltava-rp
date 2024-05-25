@@ -4,6 +4,10 @@ local activate = false;
 local startTimer = false
 local pausedTime = 0
 
+
+
+
+
 local function formatTime(raceTime)
     local minutes = math.floor(raceTime / 60000)
     local seconds = math.floor((raceTime % 60000) / 1000)
